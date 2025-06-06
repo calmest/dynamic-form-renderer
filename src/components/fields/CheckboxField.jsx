@@ -2,8 +2,9 @@ import React from 'react';
 
 const CheckboxField = ({ field, value, onChange }) => (
   <div className="mb-6">
-    <label className="flex items-center cursor-pointer">
+    <label htmlFor={field.name} className="flex items-center cursor-pointer">
       <input
+        id={field.name}
         type="checkbox"
         checked={value || false}
         onChange={(e) => onChange(field.name, e.target.checked)}

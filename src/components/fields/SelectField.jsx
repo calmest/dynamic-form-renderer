@@ -2,11 +2,12 @@ import React from 'react';
 
 const SelectField = ({ field, value, onChange, onBlur, error, touched }) => (
   <div className="mb-6">
-    <label className="block text-sm font-medium text-gray-700 mb-2">
+    <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 mb-2">
       {field.label}
       {field.required && <span className="text-red-500 ml-1">*</span>}
     </label>
     <select
+      id={field.name}
       value={value}
       onChange={(e) => onChange(field.name, e.target.value)}
       onBlur={() => onBlur(field.name)}

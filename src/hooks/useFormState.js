@@ -43,8 +43,12 @@ export const useFormState = (fields) => {
 
   const validate = useCallback(() => {
     const newErrors = {};
+    const allTouched = {};
     
     fields.forEach(field => {
+      // Mark all fields as touched when validating
+      allTouched[field.name] = true;
+      
       if (field.required && !formData[field.name]) {
         newErrors[field.name] = `${field.label} is required`;
       }
@@ -66,6 +70,7 @@ export const useFormState = (fields) => {
     });
     
     setErrors(newErrors);
+    setTouched(allTouched);
     return Object.keys(newErrors).length === 0;
   }, [fields, formData]);
 
